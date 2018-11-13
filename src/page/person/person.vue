@@ -4,7 +4,7 @@
 			<img src="../../image/touxiang.jpg">
 			<h1>李家富</h1>
 		</div>
-		<router-link tag="p" class="exit" to="/logo">退出登录</router-link>
+		<p class="exit" @click="exit">退出登录</p>
 		<Footer url="/person"/>
 	</div>
 </template>
@@ -53,15 +53,33 @@
 	import Header from '@/components/header/header.vue'
 	import Footer from '@/components/footer/footer.vue'
 
+	import {mapState, mapMutations} from 'vuex'
+
 	export default {
 		data () {
 			return {
 				list: []
 			}
 		},
+		created () {
+			if(!this.userstate){
+				this.$router.push('/logo');
+			}
+		},
 		components: {
 			Header,
 			Footer
+		},
+		computed: {
+			...mapState([
+				'userstate',
+			]),
+		},
+		methods: {
+			exit () {
+				this.userstate.socketObj.ws.onclose();
+				this.$router.push('/logo');
+			}
 		}
 	}
 </script>

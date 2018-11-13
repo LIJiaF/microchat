@@ -13,26 +13,31 @@ export default new Router({
   routes: [
   	{
       path: '/',
-      redirect: '/info'
+      redirect: '/logo'
     },
     {
       path: '/logo',
+      name: 'login',
       component: Login
     },
     {
       path: '/info',
+      name: 'info',
       component: Info
     },
     {
       path: '/chat/:userid',
+      name: 'chat',
       component: Chat
     },
     {
       path: '/user',
+      name: 'user',
       component: User
     },
     {
       path: '/person',
+      name: 'person',
       component: Person
     }
   ]
