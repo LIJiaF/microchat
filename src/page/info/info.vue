@@ -9,7 +9,7 @@
 				<img src="../../image/touxiang.jpg" class="infoImg">
 				<div class="infoContent">
 					<h1>李家富<span class="time">2018-10-11 23:00</span></h1>
-					<p>{{ item.content }} 里贾福大神路口附近的萨克了估计啊圣诞快乐</p>
+					<p>{{ item.content }}</p>
 				</div>
 			</router-link>
 		</ul>
@@ -22,6 +22,9 @@
 		padding-top: 40px;
 		padding-bottom: 48px;
 		color:#333;
+	}
+	.main::-webkit-scrollbar {
+	    display: none;
 	}
 	.info{
 		display: flex;
@@ -66,20 +69,10 @@
 		data () {
 			return {
 				list: [
-					{id: 1, user: '李家富', content: 'this is info1'},
-					{id: 2, user: '李家富', content: 'this is info2'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-					{id: 3, user: '李家富', content: 'this is info3'},
-				]
+					{id: 1, user: '李家富', content: '这是一条信息。'},
+					{id: 2, user: '李家富', content: '这是一条信息。'},
+				],
+				ws: ''
 			}
 		},
 		components: {

@@ -1,0 +1,60 @@
+syntax = "proto2";
+
+package Send_Msg;
+
+enum MSG_HEADER {
+    C_S_CONNECT = 0x00001001;
+    C_S_SENDMSGTOUSER = 0x00001002;
+
+    S_C_CONNECT = 0x00002001;
+    S_C_DISCONNECT = 0x00002002;
+
+    S_C_SENDMSGERROR = 0x00003001;
+    S_C_SENDMSGTOUSER = 0x00003002;
+}
+
+message UserInfo {
+    required fixed32 uid = 1;
+    required string account = 2;
+    required string name = 3;
+    optional bool isMe = 4;
+}
+
+message Message_class_Info {
+    required UserInfo fromUser = 1;
+    required UserInfo toUser = 2;
+    required fixed32 time = 3;
+    required string msg = 4;
+
+}
+
+message C_S_Connect {
+    required string sid = 1;
+}
+
+message S_C_Connect {
+    required fixed32 timeStamp = 99;
+}
+message S_C_DisConnect {
+    required fixed32 timeStamp = 99;
+    required string reason = 1;
+    optional fixed32 reasonType = 2;
+    required fixed32 actionType = 3; //1.重连socket 2.退回登陆界面
+    optional string data = 4;
+}
+
+message C_S_SendMsgToUser {
+    required string toUid = 1;
+    required string msg = 2;
+}
+
+message S_C_SendMsgError {
+    required fixed32 timeStamp = 99;
+    optional string reason = 1;
+    optional fixed32 reasonType = 2;
+}
+
+message S_C_SendMsgToUser {
+    required fixed32 timeStamp = 99;
+    repeated Message_class_Info MsgInfo = 1;
+}
